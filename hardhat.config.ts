@@ -2,6 +2,8 @@ import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "dotenv/config";
 import "@nomiclabs/hardhat-etherscan";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
 
 // Tasks
 import "./tasks/accounts";
@@ -11,6 +13,7 @@ import "./tasks/block-number";
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
 const PIVATE_KEY = process.env.PIVATE_KEY;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 
 // You need to export an object to setup your config
 // Go to to https://hardhat.org/config learn more
@@ -33,6 +36,14 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
+  },
+  gasReporter: {
+    enabled: true,
+    outputFile: "gas-report.txt",
+    noColors: true,
+    currency: "USD",
+    coinmarketcap: COINMARKETCAP_API_KEY,
+    token: "MATIC",
   },
 };
 
