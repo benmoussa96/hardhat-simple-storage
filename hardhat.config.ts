@@ -43,7 +43,6 @@ const config: HardhatUserConfig = {
     noColors: true,
     currency: "USD",
     coinmarketcap: COINMARKETCAP_API_KEY,
-    token: "MATIC",
   },
 };
 
